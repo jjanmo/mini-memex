@@ -1,3 +1,4 @@
+from asyncio import protocols
 import socket
 
 class URL:
@@ -48,3 +49,21 @@ class URL:
         body = response.read()
         s.close()
         return body
+
+def show(body):
+    in_tag = False
+    for character in body:
+        if character == "<":
+            in_tag = True
+        elif character == ">":
+            in_tag = False
+        elif not in_tag:
+            print(character, end="")
+
+def load(url):
+    body = url.request()
+    show(body)
+
+if __name__ == "__main__":
+    import sys
+    load(URL(sys.argv[1]))
