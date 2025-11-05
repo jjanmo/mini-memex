@@ -20,7 +20,7 @@ class URL:
         s = socket.socket(
             family=socket.AF_INET,
             type=socket.SOCK_STREAM,
-            protocol=socket.IPPROTO_TCP
+            proto=socket.IPPROTO_TCP
         )
         s.connect((self.host, 80))
 
